@@ -15,6 +15,9 @@ def average_block(img_path, block_sizes):
     # Load the image as grayscale
     img = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)
 
+    #Since image size high, reducing the height and width
+    img = cv2.resize(img,(640,480))
+
     # Iterate over the block sizes
     for block_size in block_sizes:
         # Create a copy of the image to hold the result
@@ -22,6 +25,7 @@ def average_block(img_path, block_sizes):
 
         # Get the size of the image
         h, w = img.shape
+        
 
         # Iterate over the image in blocks and replace the pixels with the average value of the block
         for i in range(0, h - block_size + 1, block_size):
